@@ -9,6 +9,7 @@
 /.tools/
 /release-signing/
 *.jks
+/keystore.properties
 
 # Android/Gradle
 **/build/
