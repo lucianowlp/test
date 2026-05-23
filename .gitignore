@@ -5,6 +5,10 @@
 /build/
 /captures/
 *.iml
+/.android-sdk/
+/.tools/
+/release-signing/
+*.jks
 
 # Android/Gradle
 **/build/
