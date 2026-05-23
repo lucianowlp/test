@@ -2,9 +2,12 @@
 
 Aplicativo Android nativo simples para:
 
-- Cadastrar tarefa com data limite.
-- Listar tarefas cadastradas.
+- Listar tarefas pendentes por padrão.
+- Filtrar para ver tarefas concluídas.
+- Cadastrar tarefa por modal com botão flutuante (FAB).
 - Marcar/desmarcar conclusão por checkbox.
+- Organizar tarefas por data (concluídas por data de conclusão mais recente).
+- Navegar por menu lateral (lado direito) entre Início e Relatório.
 - Mostrar relatório simples em tela:
   - Total
   - Concluídas
