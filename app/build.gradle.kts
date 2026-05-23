@@ -17,11 +17,11 @@ val hasKeystoreProperties = keystorePropertiesFile.exists().also { exists ->
 }
 
 android {
-    namespace = "com.example.simpletaskregister"
+    namespace = "lucianowlp.com.simplestodo"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.simpletaskregister"
+        applicationId = "lucianowlp.com.simplestodo"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

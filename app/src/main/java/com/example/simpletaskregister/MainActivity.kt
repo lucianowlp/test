@@ -1,4 +1,4 @@
-package com.example.simpletaskregister
+package lucianowlp.com.simplestodo
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
