@@ -1,0 +1,18 @@
+.gradle/
+.kotlin/
+/local.properties
+/.idea/
+/.DS_Store
+/build/
+/captures/
+*.iml
+/.android-sdk/
+/.tools/
+/release-signing/
+*.jks
+/keystore.properties
+
+# Android/Gradle
+**/build/
+app/release/
+app/debug/
