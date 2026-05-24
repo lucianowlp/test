@@ -14,14 +14,22 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -109,13 +117,27 @@ fun TaskRegisterApp() {
             drawerContent = {
                 CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
                     ModalDrawerSheet {
-                        Text(
-                            text = "Menu",
-                            style = MaterialTheme.typography.titleLarge,
-                            modifier = Modifier.padding(16.dp)
-                        )
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            Text(
+                                text = "Simple Todo",
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = "Navegação",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                         NavigationDrawerItem(
                             label = { Text("Início") },
+                            icon = {
+                                Icon(
+                                    imageVector = Icons.Filled.Home,
+                                    contentDescription = null
+                                )
+                            },
                             selected = currentScreen == AppScreen.HOME,
                             onClick = {
                                 currentScreenName = AppScreen.HOME.name
@@ -125,6 +147,12 @@ fun TaskRegisterApp() {
                         )
                         NavigationDrawerItem(
                             label = { Text("Relatório") },
+                            icon = {
+                                Icon(
+                                    imageVector = Icons.Filled.CheckCircle,
+                                    contentDescription = null
+                                )
+                            },
                             selected = currentScreen == AppScreen.REPORT,
                             onClick = {
                                 currentScreenName = AppScreen.REPORT.name
@@ -150,19 +178,38 @@ fun TaskRegisterApp() {
                                 )
                             },
                             actions = {
-                                TextButton(
-                                    onClick = { drawerScope.launch { drawerState.open() } }
-                                ) {
-                                    Text("Menu")
+                                IconButton(onClick = { drawerScope.launch { drawerState.open() } }) {
+                                    Icon(
+                                        imageVector = Icons.Filled.Menu,
+                                        contentDescription = "Abrir menu"
+                                    )
                                 }
                             }
                         )
                     },
                     floatingActionButton = {
                         if (currentScreen == AppScreen.HOME) {
-                            FloatingActionButton(onClick = { showAddTaskDialog = true }) {
-                                Text("+")
-                            }
+                            ExtendedFloatingActionButton(
+                                text = { Text("Nova tarefa") },
+                                icon = {
+                                    Icon(
+                                        imageVector = Icons.Filled.Add,
+                                        contentDescription = null
+                                    )
+                                },
+                                onClick = { showAddTaskDialog = true }
+                            )
+                        } else {
+                            ExtendedFloatingActionButton(
+                                text = { Text("Menu") },
+                                icon = {
+                                    Icon(
+                                        imageVector = Icons.Filled.Menu,
+                                        contentDescription = null
+                                    )
+                                },
+                                onClick = { drawerScope.launch { drawerState.open() } }
+                            )
                         }
                     }
                 ) { paddingValues ->
@@ -237,7 +284,10 @@ fun HomeScreen(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Card(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+        ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -287,7 +337,9 @@ fun HomeScreen(
             )
         } else {
             LazyColumn(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(items = tasks, key = { it.id }) { task ->
@@ -316,7 +368,10 @@ fun ReportScreen(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Card(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -335,7 +390,10 @@ fun ReportScreen(
             }
         }
 
-        Card(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -367,7 +425,10 @@ fun TaskRow(
     outputFormatter: DateTimeFormatter,
     onCheckedChange: (Boolean) -> Unit
 ) {
-    Card(modifier = Modifier.fillMaxWidth()) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -402,14 +463,32 @@ fun TaskRow(
             }
 
             HorizontalDivider()
-            Text(
-                text = if (task.completed && task.completedDate != null) {
-                    "Concluída em: ${task.completedDate.format(outputFormatter)}"
-                } else {
-                    "Status: não concluída"
-                },
-                style = MaterialTheme.typography.bodySmall
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Icon(
+                    imageVector = if (task.completed) {
+                        Icons.Filled.CheckCircle
+                    } else {
+                        Icons.Filled.Menu
+                    },
+                    contentDescription = null,
+                    tint = if (task.completed) {
+                        MaterialTheme.colorScheme.primary
+                    } else {
+                        MaterialTheme.colorScheme.onSurfaceVariant
+                    }
+                )
+                Text(
+                    text = if (task.completed && task.completedDate != null) {
+                        "Concluída em: ${task.completedDate.format(outputFormatter)}"
+                    } else {
+                        "Status: não concluída"
+                    },
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
         }
     }
 }

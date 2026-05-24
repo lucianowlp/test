@@ -8,6 +8,7 @@ Aplicativo Android nativo simples para:
 - Marcar/desmarcar conclusão por checkbox.
 - Organizar tarefas por data (concluídas por data de conclusão mais recente).
 - Navegar por menu lateral (lado direito) entre Início e Relatório.
+- Interface com ícones e componentes Material 3 (AppBar, cards e FAB estendido).
 - Mostrar relatório simples em tela:
   - Total
   - Concluídas
