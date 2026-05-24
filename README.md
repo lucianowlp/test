@@ -5,9 +5,11 @@ Aplicativo Android nativo simples para:
 - Listar tarefas pendentes por padrão.
 - Filtrar para ver tarefas concluídas.
 - Cadastrar tarefa por modal com botão flutuante (FAB).
+- Selecionar data da tarefa por calendário no modal (DatePicker).
 - Marcar/desmarcar conclusão por checkbox.
 - Organizar tarefas por data (concluídas por data de conclusão mais recente).
-- Navegar por menu lateral (lado direito) entre Início e Relatório.
+- Navegar por menu lateral (lado direito) entre Início, Relatório e Configurações.
+- Configurar horário diário de lembrete de tarefas pendentes.
 - Interface com ícones e componentes Material 3 (AppBar, cards e FAB estendido).
 - Mostrar relatório simples em tela:
   - Total
@@ -29,8 +31,9 @@ Aplicativo Android nativo simples para:
 
 ## Observações
 
-- Formato de data no cadastro: `yyyy-MM-dd`.
-- A lista fica em memória (não persiste após fechar o app).
+- A data é escolhida por calendário no modal.
+- As tarefas são persistidas localmente no aparelho.
+- Em Android 13+, conceda permissão de notificação na tela de Configurações.
 
 ## Assinatura de release via keystore.properties
 
