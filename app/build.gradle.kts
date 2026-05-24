@@ -1,3 +1,4 @@
+import java.io.ByteArrayOutputStream
 import java.util.Properties
 
 plugins {
@@ -16,6 +17,20 @@ val hasKeystoreProperties = keystorePropertiesFile.exists().also { exists ->
     }
 }
 
+fun gitCommitCount(): Int {
+    val stdout = ByteArrayOutputStream()
+    val result = exec {
+        commandLine("git", "rev-list", "--count", "HEAD")
+        standardOutput = stdout
+        isIgnoreExitValue = true
+    }
+    if (result.exitValue != 0) return 3
+    return stdout.toString().trim().toIntOrNull() ?: 3
+}
+
+val autoVersionCode = maxOf(3, gitCommitCount())
+val autoVersionName = "1.0.$autoVersionCode"
+
 android {
     namespace = "lucianowlp.com.simplestodo"
     compileSdk = 35
@@ -24,8 +39,8 @@ android {
         applicationId = "lucianowlp.com.simplestodo"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.0.1"
+        versionCode = autoVersionCode
+        versionName = autoVersionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

@@ -56,3 +56,9 @@ keyPassword=sua_senha
 
 O arquivo final será gerado em:
 `app/build/outputs/bundle/release/app-release.aab`
+
+## Versionamento automático para Google Play
+
+- O `versionCode` agora é gerado automaticamente pelo número de commits do Git (`git rev-list --count HEAD`).
+- Assim, a cada novo commit, o app gera uma nova versão de upload (evita erro "código de versão já foi usado").
+- O `versionName` também é atualizado automaticamente no formato `1.0.<versionCode>`.
