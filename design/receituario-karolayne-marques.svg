@@ -43,7 +43,8 @@
       }
 
       .script {
-        font-family: "Great Vibes", "Snell Roundhand", "Brush Script MT", cursive;
+        font-family: "Bickham Script Pro", "Edwardian Script ITC", "Palace Script MT", "Pinyon Script", "Great Vibes", "Snell Roundhand", cursive;
+        font-weight: 400;
       }
 
       .small-caps {
@@ -75,21 +76,21 @@
   <path d="M0 297 H210 V249 C160 279 51 278 0 248 Z" fill="url(#roseCorner)" opacity="0.45"/>
 
   <g id="decoracao-superior" filter="url(#goldGlow)">
-    <path class="gold-stroke" stroke-width="0.62" d="M-9 29 C42 -9 128 -12 219 30"/>
-    <path class="thin-gold" d="M-7 37 C45 2 132 -1 217 37"/>
-    <path class="thin-gold" d="M-5 18 C53 -4 132 -8 214 22"/>
+    <path class="gold-stroke" stroke-width="0.62" d="M-9 26 C39 -3 122 -8 219 23"/>
+    <path class="thin-gold" d="M-7 34 C43 1 132 -2 217 34"/>
+    <path class="thin-gold" d="M-5 18 C54 -3 131 -7 214 20"/>
   </g>
 
   <g id="decoracao-inferior" filter="url(#goldGlow)">
-    <path class="gold-stroke" stroke-width="0.7" d="M-6 255 C47 287 146 286 216 254"/>
-    <path class="thin-gold" d="M-6 266 C55 294 144 291 216 269"/>
-    <path class="thin-gold" d="M-7 275 C50 252 137 253 216 284"/>
+    <path class="gold-stroke" stroke-width="0.7" d="M-6 229 C42 284 145 284 216 242"/>
+    <path class="thin-gold" d="M-6 252 C48 286 146 286 216 253"/>
+    <path class="thin-gold" d="M-7 264 C51 249 137 250 216 286"/>
   </g>
 
   <g id="cabecalho" text-anchor="middle">
     <circle cx="105" cy="31.5" r="16.3" fill="url(#monogramFill)" stroke="url(#goldLine)" stroke-width="0.55" filter="url(#softShadow)"/>
     <circle cx="105" cy="31.5" r="15" fill="none" stroke="#d69b4d" stroke-width="0.28" opacity="0.9"/>
-    <text x="105" y="36.2" class="script editable-text" font-size="16" fill="#8a5614">KM</text>
+    <text x="105" y="37.1" class="script editable-text" font-size="18.6" letter-spacing="-1.7" fill="#8a5614">KM</text>
 
     <text x="105" y="63.4" class="serif editable-text" font-size="10.4" letter-spacing="1.65" fill="#8b5c1c">
       Karolayne Marques
